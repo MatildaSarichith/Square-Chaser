@@ -38,17 +38,17 @@
             // player1ScoreLabel
             // 
             this.player1ScoreLabel.ForeColor = System.Drawing.Color.White;
-            this.player1ScoreLabel.Location = new System.Drawing.Point(118, -8);
+            this.player1ScoreLabel.Location = new System.Drawing.Point(155, 9);
             this.player1ScoreLabel.Name = "player1ScoreLabel";
-            this.player1ScoreLabel.Size = new System.Drawing.Size(100, 23);
+            this.player1ScoreLabel.Size = new System.Drawing.Size(23, 11);
             this.player1ScoreLabel.TabIndex = 0;
             // 
             // player2ScoreLabel
             // 
             this.player2ScoreLabel.ForeColor = System.Drawing.Color.White;
-            this.player2ScoreLabel.Location = new System.Drawing.Point(251, -8);
+            this.player2ScoreLabel.Location = new System.Drawing.Point(291, 9);
             this.player2ScoreLabel.Name = "player2ScoreLabel";
-            this.player2ScoreLabel.Size = new System.Drawing.Size(100, 23);
+            this.player2ScoreLabel.Size = new System.Drawing.Size(23, 11);
             this.player2ScoreLabel.TabIndex = 1;
             // 
             // gameTimer
@@ -60,9 +60,9 @@
             // winLabel
             // 
             this.winLabel.ForeColor = System.Drawing.Color.White;
-            this.winLabel.Location = new System.Drawing.Point(133, 428);
+            this.winLabel.Location = new System.Drawing.Point(188, 437);
             this.winLabel.Name = "winLabel";
-            this.winLabel.Size = new System.Drawing.Size(218, 23);
+            this.winLabel.Size = new System.Drawing.Size(137, 23);
             this.winLabel.TabIndex = 2;
             // 
             // Form1

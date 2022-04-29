@@ -38,10 +38,11 @@ namespace Square_Chaser
         bool rightArrowDown = false;
 
         SolidBrush whiteBrush = new SolidBrush(Color.White);
-        Pen whitePen = new Pen(Color.White);
-        Pen bluePen = new Pen(Color.Blue, 10);
         SolidBrush pinkBrush = new SolidBrush(Color.Pink);
         SolidBrush greenBrush = new SolidBrush(Color.Green);
+        SolidBrush violetBrush = new SolidBrush(Color.Violet);
+        Pen whitePen = new Pen(Color.White);
+        Pen bluePen = new Pen(Color.Blue, 10);
         Pen yellowPen = new Pen(Color.Yellow, 10);
 
         public Form1()
@@ -110,6 +111,7 @@ namespace Square_Chaser
             e.Graphics.FillRectangle(pinkBrush, player1);
             e.Graphics.FillRectangle(greenBrush, player2);
             e.Graphics.FillRectangle(whiteBrush, point);
+            e.Graphics.FillEllipse(violetBrush, 200, 170, 10, 10);
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -154,9 +156,28 @@ namespace Square_Chaser
                 player2.X += playerSpeed;
             }
 
+            //player scores
+            if(player1.IntersectsWith(point))
+            {
+                int x = randGen.Next(20, 150);
+                int y = randGen.Next(50, 200);
+                point.Location = (new Point (x, y));
+                player1ScoreLabel.Visible = true;
+                player1Score++;
+                player1ScoreLabel.Text = $"{player1Score}";
+            }
+
+            else if (player2.IntersectsWith(point))
+            {
+                int x = randGen.Next(20, 150);
+                int y = randGen.Next(50, 200);
+                point.Location = (new Point(x, y));
+                player2ScoreLabel.Visible = true;
+                player2Score++;
+                player2ScoreLabel.Text = $"{player2Score}";
+            }
+
             Refresh();
-
-
 
             //if player reaches 5 points game ends
             if (player1Score == 5)
