@@ -156,7 +156,7 @@ namespace Square_Chaser
                 player2.X += playerSpeed;
             }
 
-            //player scores
+            //player1 and player2 scores
             if(player1.IntersectsWith(point))
             {
                 int x = randGen.Next(20, 150);
@@ -179,20 +179,19 @@ namespace Square_Chaser
 
             Refresh();
 
-            //if player reaches 5 points game ends
-            if (player1Score == 5)
+            //if player reaches 20 points game ends
+            if (player1Score == 20)
             {
                 gameTimer.Enabled = false;
                 winLabel.Visible = true;
                 winLabel.Text = "Player 1 Wins!!";
             }
-            else if (player2Score == 5)
+            else if (player2Score == 20)
             {
                 gameTimer.Enabled = false;
                 winLabel.Visible = true;
                 winLabel.Text = "Player 2 Wins!!";
             }
-
             Refresh();
         }
     }
