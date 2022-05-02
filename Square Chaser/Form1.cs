@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Square_Chaser
 {
@@ -52,6 +53,7 @@ namespace Square_Chaser
         {
             switch (e.KeyCode)
             {
+                //movement functions
                 case Keys.W:
                     wDown = true;
                     sDown = false;
@@ -105,6 +107,7 @@ namespace Square_Chaser
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            //shapes
             e.Graphics.DrawRectangle(bluePen, 10, 40, this.Width - 20, this.Height - 50);
             e.Graphics.FillRectangle(pinkBrush, player1);
             e.Graphics.FillRectangle(greenBrush, player2);
@@ -161,6 +164,8 @@ namespace Square_Chaser
                 int pointY = randGen.Next(50, 200);
                 point.Location = (new Point (pointX, pointY));
                 player1Score++;
+                SoundPlayer player1 = new SoundPlayer(Properties.Resources.pointSound);
+                player1.Play();
                 player1ScoreLabel.Text = $"{player1Score}";
             }
 
@@ -169,6 +174,8 @@ namespace Square_Chaser
                 int pointX = randGen.Next(20, 150);
                 int pointY = randGen.Next(50, 200);
                 point.Location = (new Point(pointX, pointY));
+                SoundPlayer player1 = new SoundPlayer(Properties.Resources.pointSound);
+                player1.Play();
                 player2Score++;
                 player2ScoreLabel.Text = $"{player2Score}";
             }
@@ -180,6 +187,8 @@ namespace Square_Chaser
                 int speedPointX = randGen.Next(20, 150);
                 int speedPointY = randGen.Next(50, 200);
                 speedPoint.Location = new Point(speedPointX, speedPointY);
+                SoundPlayer player2 = new SoundPlayer(Properties.Resources.powerUpSound);
+                player2.Play();
                 if (playerSpeed < 7)
                 {
                     playerSpeed++;
@@ -191,6 +200,8 @@ namespace Square_Chaser
                 int speedPointX = randGen.Next(20, 150);
                 int speedPointY = randGen.Next(50, 200);
                 speedPoint.Location = new Point(speedPointX, speedPointY);
+                SoundPlayer player2 = new SoundPlayer(Properties.Resources.powerUpSound);
+                player2.Play();
                 if (playerSpeed < 7)
                 {
                     playerSpeed++;
@@ -203,12 +214,16 @@ namespace Square_Chaser
                 gameTimer.Enabled = false;
                 winLabel.Visible = true;
                 winLabel.Text = "Player 1 Wins!!";
+                SoundPlayer player3 = new SoundPlayer(Properties.Resources.winMusic);
+                player3.Play();
             }
             else if (player2Score == 20)
             {
                 gameTimer.Enabled = false;
                 winLabel.Visible = true;
                 winLabel.Text = "Player 2 Wins!!";
+                SoundPlayer player3 = new SoundPlayer(Properties.Resources.winMusic);
+                player3.Play();
             }
 
             Refresh();

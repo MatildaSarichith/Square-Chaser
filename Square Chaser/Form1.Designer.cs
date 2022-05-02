@@ -62,9 +62,9 @@
             // winLabel
             // 
             this.winLabel.ForeColor = System.Drawing.Color.White;
-            this.winLabel.Location = new System.Drawing.Point(188, 437);
+            this.winLabel.Location = new System.Drawing.Point(196, 446);
             this.winLabel.Name = "winLabel";
-            this.winLabel.Size = new System.Drawing.Size(137, 23);
+            this.winLabel.Size = new System.Drawing.Size(89, 23);
             this.winLabel.TabIndex = 2;
             this.winLabel.Visible = false;
             // 
@@ -73,7 +73,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(496, 450);
+            this.ClientSize = new System.Drawing.Size(496, 497);
             this.Controls.Add(this.winLabel);
             this.Controls.Add(this.player2ScoreLabel);
             this.Controls.Add(this.player1ScoreLabel);
