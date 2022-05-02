@@ -42,6 +42,7 @@
             this.player1ScoreLabel.Name = "player1ScoreLabel";
             this.player1ScoreLabel.Size = new System.Drawing.Size(23, 11);
             this.player1ScoreLabel.TabIndex = 0;
+            this.player1ScoreLabel.Text = "0";
             // 
             // player2ScoreLabel
             // 
@@ -50,6 +51,7 @@
             this.player2ScoreLabel.Name = "player2ScoreLabel";
             this.player2ScoreLabel.Size = new System.Drawing.Size(23, 11);
             this.player2ScoreLabel.TabIndex = 1;
+            this.player2ScoreLabel.Text = "0";
             // 
             // gameTimer
             // 
@@ -64,6 +66,7 @@
             this.winLabel.Name = "winLabel";
             this.winLabel.Size = new System.Drawing.Size(137, 23);
             this.winLabel.TabIndex = 2;
+            this.winLabel.Visible = false;
             // 
             // Form1
             // 

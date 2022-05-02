@@ -17,16 +17,14 @@ namespace Square_Chaser
         Rectangle player1 = new Rectangle(10, 130, 20, 20);
         Rectangle player2 = new Rectangle(10, 200, 20, 20);
         Rectangle ball = new Rectangle(295, 195, 10, 10);
-        Rectangle boarder = new Rectangle(25, 25, 450, 400);
         Rectangle point = new Rectangle(250, 160, 10, 10);
+        Rectangle speedPoint = new Rectangle(250, 180, 15, 15);
 
         int player1Score = 0;
         int player2Score = 0;
         int playerTurn = 1;
 
         int playerSpeed = 4;
-        int ballXSpeed = 6;
-        int ballYSpeed = -6;
 
         bool wDown = false;
         bool sDown = false;
@@ -107,51 +105,51 @@ namespace Square_Chaser
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(bluePen, boarder);
+            e.Graphics.DrawRectangle(bluePen, 10, 40, this.Width - 20, this.Height - 50);
             e.Graphics.FillRectangle(pinkBrush, player1);
             e.Graphics.FillRectangle(greenBrush, player2);
             e.Graphics.FillRectangle(whiteBrush, point);
-            e.Graphics.FillEllipse(violetBrush, 200, 170, 10, 10);
+            e.Graphics.FillEllipse(violetBrush, speedPoint);
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             //move player 1 
-            if (wDown == true && player1.Y > 0)
+            if (wDown == true && player1.Y > 47)
             {
                 player1.Y -= playerSpeed;
             }
 
-            if (sDown == true && player1.Y < this.Height - player1.Height)
+            if (sDown == true && player1.Y < (this.Height - 19) - player1.Height)
             {
                 player1.Y += playerSpeed;
             }
 
-            if (aDown == true && player1.X > 0)
+            if (aDown == true && player1.X > 17)
             {
                 player1.X -= playerSpeed;
             }
-            if (dDown == true && player1.X < this.Width - player1.Width)
+            if (dDown == true && player1.X < (this.Width - 17) - player1.Width)
             {
                 player1.X += playerSpeed;
             }
 
             //move player 2 
-            if (upArrowDown == true && player2.Y > 0)
+            if (upArrowDown == true && player2.Y > 47)
             {
                 player2.Y -= playerSpeed;
             }
 
-            if (downArrowDown == true && player2.Y < this.Height - player2.Height)
+            if (downArrowDown == true && player2.Y < (this.Height - 19) - player2.Height)
             {
                 player2.Y += playerSpeed;
             }
 
-            if (leftArrowDown == true && player2.X > 0)
+            if (leftArrowDown == true && player2.X > 17)
             {
                 player2.X -= playerSpeed;
             }
-            if (rightArrowDown == true && player2.X < this.Width - player2.Width)
+            if (rightArrowDown == true && player2.X < (this.Width - 17) - player2.Width)
             {
                 player2.X += playerSpeed;
             }
@@ -159,25 +157,45 @@ namespace Square_Chaser
             //player1 and player2 scores
             if(player1.IntersectsWith(point))
             {
-                int x = randGen.Next(20, 150);
-                int y = randGen.Next(50, 200);
-                point.Location = (new Point (x, y));
-                player1ScoreLabel.Visible = true;
+                int pointX = randGen.Next(20, 150);
+                int pointY = randGen.Next(50, 200);
+                point.Location = (new Point (pointX, pointY));
                 player1Score++;
                 player1ScoreLabel.Text = $"{player1Score}";
             }
 
             else if (player2.IntersectsWith(point))
             {
-                int x = randGen.Next(20, 150);
-                int y = randGen.Next(50, 200);
-                point.Location = (new Point(x, y));
-                player2ScoreLabel.Visible = true;
+                int pointX = randGen.Next(20, 150);
+                int pointY = randGen.Next(50, 200);
+                point.Location = (new Point(pointX, pointY));
                 player2Score++;
                 player2ScoreLabel.Text = $"{player2Score}";
             }
 
-            Refresh();
+            //speed power-up
+
+            if (player1.IntersectsWith(speedPoint))
+            {
+                int speedPointX = randGen.Next(20, 150);
+                int speedPointY = randGen.Next(50, 200);
+                speedPoint.Location = new Point(speedPointX, speedPointY);
+                if (playerSpeed < 7)
+                {
+                    playerSpeed++;
+                }
+            }
+
+            else if (player2.IntersectsWith(speedPoint))
+            {
+                int speedPointX = randGen.Next(20, 150);
+                int speedPointY = randGen.Next(50, 200);
+                speedPoint.Location = new Point(speedPointX, speedPointY);
+                if (playerSpeed < 7)
+                {
+                    playerSpeed++;
+                }
+            }
 
             //if player reaches 20 points game ends
             if (player1Score == 20)
@@ -192,6 +210,7 @@ namespace Square_Chaser
                 winLabel.Visible = true;
                 winLabel.Text = "Player 2 Wins!!";
             }
+
             Refresh();
         }
     }
